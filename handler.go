@@ -601,6 +601,9 @@ func (h *TargetHandler) domEvent(ctxt context.Context, ev interface{}) {
 		id, op = e.NodeID, attributeRemoved(e.Name)
 
 	case *dom.EventInlineStyleInvalidated:
+		if len(e.NodeIds) == 0 {
+			return
+		}
 		id, op = e.NodeIds[0], inlineStyleInvalidated(e.NodeIds[1:])
 
 	case *dom.EventCharacterDataModified:
