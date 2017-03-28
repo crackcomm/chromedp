@@ -3,6 +3,7 @@ package chromedp
 import (
 	"context"
 	"fmt"
+	"math/rand"
 	"time"
 
 	"github.com/knq/chromedp/cdp"
@@ -162,7 +163,7 @@ func KeyAction(keys string, opts ...KeyOption) Action {
 			}
 
 			// TODO: move to context
-			time.Sleep(5 * time.Millisecond)
+			time.Sleep((time.Duration(rand.Intn(50)) + 50) * time.Millisecond)
 		}
 
 		return nil
